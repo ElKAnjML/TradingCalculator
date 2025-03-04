@@ -1,7 +1,7 @@
 import streamlit as st
 
 def main():
-    st.title("K Trade Calculator")
+    st.title("Trade Outcome Calculator")
     st.write("Calculate trade outcomes with multiple take profit levels, accounting for fees and detailed profit/loss analysis.")
 
     with st.form("trade_calculator_form"):
@@ -49,14 +49,6 @@ def main():
         submitted = st.form_submit_button("Calculate Trade Outcome")
     
     if submitted:
-        st.header("Risk/Reward Analysis")
-        risk = abs(sl_loss)
-        reward = overall_profit
-        rr_ratio = reward / risk if risk > 0 else float('inf')
-        
-        st.write(f"Risk: ${risk:.2f} ({abs(sl_capital_percentage):.2f}% of capital)")
-        st.write(f"Reward: ${reward:.2f} ({overall_capital_percentage:.2f}% of capital)")
-        st.write(f"Risk/Reward Ratio: 1:{rr_ratio:.2f}")
         st.header("Trade Analysis")
         actual_cost = max_shares * entry_price
         entry_fee = actual_cost * fee
@@ -137,7 +129,14 @@ def main():
         st.write(f"Percentage of Capital: {sl_capital_percentage:.2f}%")
         st.write(f"Capital After SL: ${capital + sl_loss:.2f}")
         
-
+        st.header("Risk/Reward Analysis")
+        risk = abs(sl_loss)
+        reward = overall_profit
+        rr_ratio = reward / risk if risk > 0 else float('inf')
+        
+        st.write(f"Risk: ${risk:.2f} ({abs(sl_capital_percentage):.2f}% of capital)")
+        st.write(f"Reward: ${reward:.2f} ({overall_capital_percentage:.2f}% of capital)")
+        st.write(f"Risk/Reward Ratio: 1:{rr_ratio:.2f}")
 
 if __name__ == "__main__":
     main()
