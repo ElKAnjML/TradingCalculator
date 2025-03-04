@@ -1,8 +1,8 @@
 import streamlit as st
 
 def main():
-    st.title("Trade Outcome Calculator")
-    st.write("Calculate trade outcomes with multiple take profit levels, accounting for fees and detailed profit/loss analysis.")
+    st.title("K Trade Calculator")
+    st.write("Calculate trade outcomes with multiple take profit levels, accounting for fees and PnL.")
 
     with st.form("trade_calculator_form"):
         st.subheader("Trade Parameters")
